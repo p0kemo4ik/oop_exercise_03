@@ -2,6 +2,7 @@
 #include"figs.hpp"
 #include<cmath>
 #include<cassert>
+#include <vector>
 
 //Pentagon
 Pentagon::Pentagon() {};
@@ -17,10 +18,17 @@ Vertex Pentagon::center() const {
 }
 double Pentagon::square() const  {
     double Area = 0;
+    Vertex Cntr = center();
+    std::vector<Vertex > Sqr;
+    for (int i = 0; i < 5; i++){
+        Sqr.push_back(Cntr);
+        Sqr[i].x = Vertexs[i].x - Cntr.x;
+        Sqr[i].y = Vertexs[i].y - Cntr.y;
+    }
     for (int i = 0; i < 5; i++) {
         Area += (Vertexs[i].x) * (Vertexs[(i + 1)%5].y) - (Vertexs[(i + 1)%5].x)*(Vertexs[i].y);
     }
-    Area *= 0.5;
+    Area *=  0.5 ;
     return abs(Area);
 }
 
@@ -86,3 +94,5 @@ Octagon::Octagon(std::istream &in) {
             std::cout << Vertexs[i] << ' ';
         std::cout << '\b';
     }
+
+

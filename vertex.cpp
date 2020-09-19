@@ -22,8 +22,15 @@ Vertex operator-(const Vertex &a, const Vertex& b) {
     return Vertex(a.x - b.x, a.y - b.y);
 }
 
-Vertex operator/(const Vertex &a, const double& b) {
+Vertex operator/(const Vertex &a, const double b) {
     return Vertex(a.x / b, a.y / b);
+}
+Vertex operator*(const Vertex &a, const double b){
+    return Vertex(a.x * b, a.y * b);
+}
+
+Vertex Floor(const Vertex &a) {
+    return Vertex(floor(a.x), floor(a.y));
 }
 
 double distance(const Vertex &a, const Vertex& b) {

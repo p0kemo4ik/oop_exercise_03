@@ -1,6 +1,8 @@
 ﻿#include<iostream>
+#include <vector>
 #include"figs.hpp"
 #include<locale>
+#include <cmath>
 
 int getOption() {
     int Menu;
@@ -10,6 +12,7 @@ int getOption() {
     std::cout << "4. Распечатать коориднаты фигуры по индексу" << std::endl;
     std::cout << "5. Вычислить общую площадь всех фигур" << std::endl;
     std::cout << "6. Удалить фигуру по индексу" << std::endl;
+    std::cout << "7. Задать координаты фигуры по количеству вершин, радиусу, центру фигуры и углу вращения" << std::endl;
     std::cin >> Menu;
     return Menu;
 }
@@ -82,6 +85,23 @@ int main() {
                 std::swap(Figures[Figures.size() - 1], Figures[Index]);
                 delete Figures[Figures.size() - 1];
                 Figures.pop_back();
+                break;
+
+            case 7: {
+                std::cout << "Введите R, n, x0, y0, phi" << std::endl;
+                double x, y, R, phi;
+                int n;
+                std::cin >> R >> n >> x >> y >> phi;
+                std::vector<Vertex> z0;
+                for (int i = 0; i < n; i++) {
+                    z0.push_back(Vertex(x + R * cos(phi + 2 * M_PI * i / n),
+                                        y + R * (float) sin(phi + 2 * M_PI * i / n)));
+                }
+                for (int i = 0; i < n; i++) {
+                    std::cout << z0[i].x <<" " << z0[i].y<<std::endl;
+                }
+                std::cout << std::endl;
+            }
                 break;
             default:
                 for (int i = 0; i < (int)Figures.size(); i++) {

@@ -11,6 +11,8 @@ public:
 };
 Vertex operator+ (const Vertex &a, const Vertex& b);
 Vertex operator- (const Vertex &a, const Vertex& b);
-Vertex operator/ (const Vertex &a, const double& b);
+Vertex operator/ (const Vertex &a, const double b);
+Vertex operator* (const Vertex &a, const double b);
 double distance(const Vertex &a, const Vertex& b);
 double vector_product(const Vertex& a, const Vertex& b);
+Vertex Floor(const Vertex &a);
